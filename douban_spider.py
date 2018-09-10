@@ -16,7 +16,7 @@ class  DoubanDianYing(scrapy.Spider):
                     }
 
 
-                    for page in range(0,25,25):
+                    for page in range(0,251,25):
                         url = 'https://movie.douban.com/top250?start=%d&filter=' % page
                         yield scrapy.Request(url,headers=headers)
 
@@ -41,7 +41,7 @@ class  DoubanDianYing(scrapy.Spider):
                     # rating = response.xpath('//div[@class="star"]/span[@class="rating_num"]/text()').extract()
                     # hots = response.xpath('//div[@class="star"]/span[4]/text()').extract()
                     #
-                    # if '6.0' in titles:
+                    # if '6.0' in titles: #豆瓣派来的逗我们玩的 脏数据大概就是说的它!
                     #         titles.remove('6.0')
                     #
                     # for index in range(len(titles)):
