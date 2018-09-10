@@ -17,10 +17,7 @@ class  DoubanDianYing(scrapy.Spider):
 
 
                     for page in range(0,25,25):
-                        if page is not 0:
-                             url = 'https://movie.douban.com/top250?start=%d&filter=' % page
-                        else:
-                             url = 'https://movie.douban.com/top250'
+                        url = 'https://movie.douban.com/top250?start=%d&filter=' % page
                         yield scrapy.Request(url,headers=headers)
 
             def parse(self, response):
@@ -44,7 +41,10 @@ class  DoubanDianYing(scrapy.Spider):
                     # rating = response.xpath('//div[@class="star"]/span[@class="rating_num"]/text()').extract()
                     # hots = response.xpath('//div[@class="star"]/span[4]/text()').extract()
                     #
-                    # for index in range(len(imgs)):
+                    # if '6.0' in titles:
+                    #         titles.remove('6.0')
+                    #
+                    # for index in range(len(titles)):
                     #          dic = {}
                     #          dic['title'] = titles[index]
                     #          dic['img'] = imgs[index]
